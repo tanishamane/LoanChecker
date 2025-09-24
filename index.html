@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CrediGrant — Check Credit Score & Loan Eligibility</title>
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- <link rel="stylesheet" href="loan-emi.css" /> -->
+  <!-- <link rel="icon" href="assets/logo.svg" /> -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="script.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="register.js" defer></script> -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js"></script> -->
+
+<!-- <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js"></script> -->
+  <!-- <script defer src="loan-emi.js"></script> -->
+</head>
+<body class="theme-auto">
+
+  <!-- Header -->
+  <!-- <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="Logo.svg" alt="logo" />
+      <span>CrediGrant</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="check-score.html">Check Score</a>
+      <a href="calculator.html">Calculators</a>
+      <a href="blog.html">Blog</a>
+      <a href="faq.html">FAQs</a>
+      <a href="about.html">About</a>
+      <a href="Login.html" class="btn btn-outline">Login</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
+  </header> -->
+
+  <!-- Main Content -->
+  <!-- <main> -->
+    <!-- Hero Section -->
+    <!-- <section class="hero container">
+      <div class="hero-content">
+        <h1>Check Your Credit Score & Get Instant Loan Eligibility</h1>
+        <p>Free, secure, and fast. See where your credit stands and discover personalized loan offers without impacting your score.</p>
+        <div class="hero-cta">
+          <a href="check-score.html" class="btn btn-primary">Check My Eligibility</a>
+          
+        </div>
+        
+      </div>
+      <div class="hero-art">
+        
+    </section> -->
+<header class="site-header" style="background: #111; border-bottom: 4px solid #ffd600; position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; padding: 14px 20px;">
+  <a class="brand" href="index.html" style="display: flex; align-items: center; gap: 10px; color: #ffd600; font-weight: 700; font-size: 1.1rem; text-decoration: none;">
+    <div style="
+      background-color: #ffd600;
+      border-radius: 8px;
+      width: 36px; height: 36px;
+      display: flex; justify-content: center; align-items: center;
+      font-weight: 900; font-size: 1.1rem; color: #111;
+      user-select: none;
+    ">
+      LC
+    </div>
+    <span>Loan Checker</span>
+  </a>
+  <nav class="nav" style="display: flex; gap: 24px; align-items: center; font-weight: 600;">
+    <a href="index.html" class="active" style="color: #eee; padding: 8px 10px; border-radius: 8px; text-decoration: none; transition: color 0.3s, background 0.3s;">Home</a>
+    <a href="check-score.html" style="color: #eee; padding: 8px 10px; border-radius: 8px; text-decoration: none; transition: color 0.3s, background 0.3s;">Check Score</a>
+    <a href="calculator.html" style="color: #eee; padding: 8px 10px; border-radius: 8px; text-decoration: none; transition: color 0.3s, background 0.3s;">Calculators</a>
+    <a href="blog.html" style="color: #eee; padding: 8px 10px; border-radius: 8px; text-decoration: none; transition: color 0.3s, background 0.3s;">Blog</a>
+    <a href="faq.html" style="color: #eee; padding: 8px 10px; border-radius: 8px; text-decoration: none; transition: color 0.3s, background 0.3s;">FAQs</a>
+    <a href="about.html" style="color: #eee; padding: 8px 10px; border-radius: 8px; text-decoration: none; transition: color 0.3s, background 0.3s;">About</a>
+    <a href="Login.html" class="btn btn-outline" style="
+      background: transparent;
+      border: 2px solid #ffd600;
+      color: #ffd600;
+      border-radius: 12px;
+      padding: 8px 16px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    " onmouseover="this.style.background='#ffd600'; this.style.color='#111';" onmouseout="this.style.background='transparent'; this.style.color='#ffd600';">Login</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open Menu" style="display: none; background: #ffd600; border: none; border-radius: 10px; padding: 8px 10px; color: #111; font-weight: 700; cursor: pointer;">☰</button>
+</header>
+
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero container" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center; padding: clamp(36px, 5vw, 56px) 0; background: #fff; color: #111;">
+    <div class="hero-content">
+      <h1 style="font-size: clamp(28px, 3vw, 40px); font-weight: 900; margin-bottom: 10px; line-height: 1.1;">
+        Check your <span style="color: #ffd600;">Credit Score</span> &amp;<br />
+        Loan Eligibility in minutes
+      </h1>
+      <p style="color: #444; font-weight: 500; margin-bottom: 22px;">
+        Free, secure, and fast. See where your credit stands and discover personalized loan offers without impacting your score.
+      </p>
+      <div class="hero-cta">
+        <a href="check-score.html" class="btn btn-primary" style="
+          background: #ffd600;
+          color: #111;
+          padding: 12px 22px;
+          border-radius: 9999px;
+          font-weight: 700;
+          font-size: 1.1rem;
+          border: none;
+          box-shadow: 0 5px 15px rgba(255, 214, 0, 0.5);
+          transition: background 0.3s;
+          display: inline-block;
+          text-decoration: none;
+        " onmouseover="this.style.background='#ffbb00';" onmouseout="this.style.background='#ffd600';">
+          Start Checking
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+    <!-- Benefits -->
+    <section class="section container">
+      <h2 class="section-title">Why Choose CrediGrant?</h2>
+      <div class="grid cards-3">
+        <div class="card benefit">
+          <div class="icon">✅</div>
+          <h3>Free Check</h3>
+          <p>View your credit score and basic report for free. No hidden fees.</p>
+        </div>
+        <div class="card benefit">
+          <div class="icon">🧪</div>
+          <h3>No Impact</h3>
+          <p>Soft pull only. Checking here won’t affect your credit score.</p>
+        </div>
+        <div class="card benefit">
+          <div class="icon">🔐</div>
+          <h3>Secure & Encrypted</h3>
+          <p>Bank-grade security and encryption for your personal data.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section container">
+      <h2 class="section-title">How It Works</h2>
+      <div class="timeline">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h4>Enter basic details</h4>
+          <p>Name, PAN (masked), DOB, mobile & email.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h4>Verify identity</h4>
+          <p>Quick OTP verification on your mobile.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h4>Get your credit score</h4>
+          <p>See your score and a short explanation instantly.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <h4>View loan offers</h4>
+          <p>Compare curated offers tailored to your profile.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Loan Categories -->
+    <section class="section container">
+      <h2 class="section-title">Loan Categories</h2>
+      <div class="grid cards-4">
+        <a class="card product" href="check-score.html?type=personal">
+          <h3>Personal Loan</h3>
+          <p>Quick approval, flexible tenure.</p>
+          <span class="pill">Check Eligibility →</span>
+        </a>
+        <a class="card product" href="check-score.html?type=home">
+          <h3>Home Loan</h3>
+          <p>Low rates for your dream home.</p>
+          <span class="pill">Check Eligibility →</span>
+        </a>
+        <a class="card product" href="check-score.html?type=car">
+          <h3>Car Loan</h3>
+          <p>Drive now, pay later with ease.</p>
+          <span class="pill">Check Eligibility →</span>
+        </a>
+        <a class="card product" href="check-score.html?type=card">
+          <h3>Credit Card</h3>
+          <p>Rewards, cashback & perks.</p>
+          <span class="pill">Check Eligibility →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- EMI Calculator -->
+    <section class="emi-section container">
+      <h1>Loan EMI Affordability</h1>
+      <p class="subtitle">Check how much EMI fits into your budget without exceeding <span class="highlight">40%</span> of your income</p>
+
+      <div class="input-section">
+        <label>Monthly Income (₹):</label>
+        <input type="number" id="income" value="50000">
+        <label>Current Monthly EMI (₹):</label>
+        <input type="number" id="currentEmi" value="15000">
+        <label>Preferred Loan Amount (₹):</label>
+        <input type="number" id="loanAmount" value="500000">
+        <label>Loan Tenure (Years):</label>
+        <input type="number" id="tenure" value="5">
+        <label>Interest Rate (%):</label>
+        <input type="number" step="0.1" id="interestRate" value="10">
+        <button onclick="updateGraphs()">Calculate</button>
+      </div>
+
+      <div class="charts-container">
+        <div class="chart-box">
+          <h3>Income Split</h3>
+          <canvas id="donutChart"></canvas>
+        </div>
+        <div class="chart-box">
+          <h3>EMI vs Safe Limit</h3>
+          <canvas id="barChart"></canvas>
+        </div>
+      </div>
+
+      <div class="insights" id="insightsBox"></div>
+
+      <div class="extra-data">
+        <h4>💡 How we calculate EMI</h4>
+        <p>EMI = [P × r × (1 + r)^n] / [(1 + r)^n – 1]<br>
+        where P = Loan Amount, r = Monthly Interest Rate, n = Loan Tenure in Months.</p>
+
+        <h4>📊 Market Average</h4>
+        <p>Most financial experts recommend keeping EMI ≤ 40% of your monthly income.</p>
+      </div>
+    </section>
+
+    <!-- Credit Improvement Tips -->
+    <section class="credit-tips container">
+      <h2>💡 Credit Improvement Tips</h2>
+      <p class="subtitle">Improve your credit score with these actionable tips and educational insights.</p>
+
+      <div class="tips-grid">
+        <!-- Tip cards -->
+        <div class="tip-card"><h3>Pay Bills on Time</h3><p>Payment history is the biggest factor...</p></div>
+        <div class="tip-card"><h3>Keep Credit Utilization Below 30%</h3><p>Use less than one-third of your credit limit...</p></div>
+        <div class="tip-card"><h3>Avoid Multiple Credit Inquiries</h3><p>Too many new applications in a short time...</p></div>
+        <div class="tip-card"><h3>Maintain a Healthy Credit Mix</h3><p>Having a mix of credit types...</p></div>
+        <div class="tip-card"><h3>Regularly Check Your Credit Report</h3><p>Spot and dispute any errors...</p></div>
+        <div class="tip-card"><h3>Clear Outstanding Debts</h3><p>Prioritize paying off high-interest loans...</p></div>
+        <div class="tip-card"><h3>Don’t Close Old Credit Accounts</h3><p>Longer credit history generally boosts your score.</p></div>
+        <div class="tip-card"><h3>Increase Your Credit Limit</h3><p>This can reduce utilization ratio...</p></div>
+        <div class="tip-card"><h3>Keep New Debt Low</h3><p>Avoid taking unnecessary loans...</p></div>
+        <div class="tip-card"><h3>Build Credit with a Secured Credit Card</h3><p>Great for people with no or poor credit history.</p></div>
+      </div>
+
+      <!-- Extra Educational Notes Accordion -->
+      <div class="extra-notes">
+        <h3>📘 Extra Educational Notes</h3>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header">Credit Score Factors</button>
+            <div class="accordion-content"><p>Payment History, Utilization Ratio, Credit Age, Inquiries, and Credit Mix all influence your score.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Impact Timeline</button>
+            <div class="accordion-content"><p>Some actions show results in months; others take longer.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Do’s & Don’ts</button>
+            <div class="accordion-content"><p>✅ Pay bills, use low credit, check reports. ❌ Avoid late payments, maxing out cards, too many inquiries.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- =========================
+     Pre-Footer Section
+========================= -->
+<section class="pre-footer">
+  <div class="container pre-footer-grid">
+    
+    <!-- CTA Block -->
+    <div class="cta-block">
+      <h3>Ready to Check Your Credit Score?</h3>
+      <p>Instant, secure & personalized loan offers in less than 30 seconds.</p>
+      <a href="check-score.html" class="btn btn-primary">Check Now</a>
+    </div>
+
+    <!-- Quick Benefits -->
+    <div class="benefits-block">
+      <div class="benefit">
+        <span class="icon">🔒</span>
+        <p>Secure & Encrypted</p>
+      </div>
+      <div class="benefit">
+        <span class="icon">⚡</span>
+        <p>Instant Results</p>
+      </div>
+      <div class="benefit">
+        <span class="icon">💰</span>
+        <p>Better Loan Offers</p>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter-block">
+      <h4>Stay Updated</h4>
+      <p>Get credit tips & insights directly to your inbox.</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" class="btn btn-outline">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+  
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <!-- <img src="Logo.svg" alt="CrediGrant Logo" /> -->
+        <span>CrediGrant</span>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+          <a href="blog.html">Blog</a>
+          <a href="faq.html">FAQs</a>
+        </div>
+        <div>
+          <h4>Products</h4>
+          <a href="check-score.html?type=personal">Personal Loan</a>
+          <a href="check-score.html?type=home">Home Loan</a>
+          <a href="check-score.html?type=car">Car Loan</a>
+          <a href="check-score.html?type=card">Credit Card</a>
+        </div>
+       <section class="legal-container">
+  <h4>Legal</h4>
+
+  <div class="legal-section">
+    <a href="#" data-target="privacy">Privacy Policy</a>
+    <div id="privacy" class="legal-info">
+      We respect your privacy. Your data is secure and never shared without consent.
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <a href="#" data-target="terms">Terms of Service</a>
+    <div id="terms" class="legal-info">
+      By using our service, you agree to our terms including usage limits and fair use.
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <a href="#" data-target="kyc">KYC & Compliance</a>
+    <div id="kyc" class="legal-info">
+      All users must comply with KYC requirements for financial security and regulations.
+    </div>
+  </div>
+</section>
+
+<style>
+  .legal-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  .legal-section {
+    margin-bottom: 15px;
+  }
+  .legal-info {
+    margin-top: 8px;
+    padding: 10px;
+    border-left: 3px solid #2563eb;
+    background: #000000;
+    display: none; /* hidden by default */
+  }
+  .legal-container a {
+    display: block;
+    margin: 5px 0;
+    color: #2563eb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .legal-container a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<!-- Your existing HTML code above -->
+
+<!-- ✅ Firebase Config + Initialization -->
+<script>
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyANP-eQh83GzWoBuE2tGirmSQXwpeT3utc",
+    authDomain: "credit-score-checker-78666.firebaseapp.com",
+    projectId: "credit-score-checker-78666",
+    storageBucket: "credit-score-checker-78666.firebasestorage.app",
+    messagingSenderId: "933140507068",
+    appId: "1:933140507068:web:80ece2fd3f80097ea763b9",
+    measurementId: "G-KDGPN9XV5H"
+  };
+
+  // ✅ Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+</script>
+
+<script>
+  document.querySelectorAll(".legal-container a[data-target]").forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const targetId = link.getAttribute("data-target");
+      const target = document.getElementById(targetId);
+
+      target.style.display = (target.style.display === "block") ? "none" : "block";
+    });
+  });
+</script>
+
+
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

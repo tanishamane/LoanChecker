@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Calculators — CrediGrant</title>
+  <link rel="stylesheet" href="style.css"/>
+  <!-- <link rel="icon" href="assets/logo.svg"/> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+<header class="site-header">
+    <div class="container">
+      <div class="brand"><div class="logo">LC</div><div class="title">Loan Checker</div></div>
+      <nav class="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="check-score.html">Check Score</a>
+        <a href="calculator.html">Calculators</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQs</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+      </nav>
+      <a class="cta" href="#check">Check Now</a>
+    </div>
+  </header>
+
+
+<main class="container">
+  <h1 class="page-title">Loan Calculators</h1>
+
+  <div class="grid two">
+    <!-- EMI Calculator -->
+    <div class="card">
+      <h3>EMI Calculator</h3>
+      <form id="emiForm" class="form compact">
+        <div class="field"><label>Loan Amount (₹)</label><input type="number" id="emiAmount" value="" min="10000" step="1000" required></div>
+        <div class="field"><label>Interest Rate (% p.a.)</label><input type="number" id="emiRate" value="" min="1" step="0.1" required></div>
+        <div class="field"><label>Tenure (months)</label><input type="number" id="emiMonths" value="" min="6" step="1" required></div>
+        <button class="btn btn-primary" type="submit">Calculate</button>
+      </form>
+      <div class="stats">
+        <div class="stat"><span class="stat-label">Monthly EMI</span><span id="emiOut" class="stat-value">—</span></div>
+        <div class="stat"><span class="stat-label">Total Interest</span><span id="emiInterest" class="stat-value">—</span></div>
+        <div class="stat"><span class="stat-label">Total Payable</span><span id="emiTotal" class="stat-value">—</span></div>
+      </div>
+      <canvas id="emiChart" height="220" aria-label="EMI chart"></canvas>
+    </div>
+
+    <!-- Eligibility Calculator -->
+    <div class="card">
+      <h3>Eligibility Calculator</h3>
+      <form id="eligForm" class="form compact">
+        <div class="field"><label>Monthly Salary (₹)</label><input type="number" id="eligSalary" value="" min="0" required></div>
+        <div class="field"><label>Monthly Expenses (₹)</label><input type="number" id="eligExp" value="" min="0" required></div>
+        <div class="field">
+          <label>Loan Type</label>
+          <select id="eligType">
+            <option value="personal">Personal Loan</option>
+            <option value="home">Home Loan</option>
+            <option value="car">Car Loan</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Estimate Eligibility</button>
+      </form>
+      <div class="stats">
+        <div class="stat"><span class="stat-label">Eligible EMI (40% rule)</span><span id="eligEmi" class="stat-value">—</span></div>
+        <div class="stat"><span class="stat-label">Approx. Loan Amount</span><span id="eligAmt" class="stat-value">—</span></div>
+      </div>
+      <canvas id="eligChart" height="220" aria-label="Eligibility chart"></canvas>
+      <p class="muted">Note: These are rough estimates. Actual eligibility depends on lender policies and your credit profile.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+</footer>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Login / Sign Up — CrediGrant</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    .hidden { display: none; }
+    .form { max-width: 400px; margin: auto; }
+    .switch { margin-top: 1rem; text-align: center; }
+    .switch a { color: var(--primary, #2563eb); cursor: pointer; text-decoration: underline; }
+    .error { color: red; font-size: 0.9rem; margin-top: 0.25rem; }
+    .success { color: green; font-size: 0.9rem; margin-top: 0.25rem; }
+  </style>
+</head>
+<body>
+<header class="site-header">
+    <div class="container">
+      <div class="brand"><div class="logo">LC</div><div class="title">Loan Checker</div></div>
+      <nav class="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="check-score.html">Check Score</a>
+        <a href="calculator.html">Calculators</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQs</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+      </nav>
+      <a class="cta" href="#check">Check Now</a>
+    </div>
+</header>
+
+<main class="container">
+  <h1 class="page-title" id="formTitle">Login</h1>
+
+  <!-- LOGIN FORM -->
+  <form class="card form" id="loginForm">
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="loginEmail" placeholder="Enter your email" required>
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="loginPassword" placeholder="Enter your password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    <p id="loginMsg" class="muted"></p>
+    <div class="switch">
+      Don’t have an account? <a id="showSignup">Sign up</a>
+    </div>
+  </form>
+
+  <!-- SIGNUP FORM -->
+  <form class="card form hidden" id="signupForm">
+    <div class="field">
+      <label>Full Name</label>
+      <input type="text" id="signupName" placeholder="Enter your name" required>
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="signupEmail" placeholder="Enter your email" required>
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="signupPassword" placeholder="Create a password" required>
+    </div>
+    <div class="field">
+      <label>Confirm Password</label>
+      <input type="password" id="signupConfirm" placeholder="Confirm your password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+    <p id="signupMsg" class="muted"></p>
+    <div class="switch">
+      Already have an account? <a id="showLogin">Login</a>
+    </div>
+  </form>
+</main>
+
+<script type="module">
+  // 🔹 Firebase Imports
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+
+  // 🔹 Firebase Config (replace with your own values)
+  const firebaseConfig = {
+    apiKey: "AIzaSyBNdA6m8Cylv14eY0cG8POjRjx4mLlxiNc",
+    authDomain: "login-page-e704f.firebaseapp.com",
+    projectId: "login-page-e704f",
+    storageBucket: "login-page-e704f.firebasestorage.app",
+    messagingSenderId: "133247937822",
+    appId: "1:133247937822:web:e6b786735535d2f724ad0f"
+  };
+
+  // 🔹 Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Toggle Forms
+  const loginForm = document.getElementById("loginForm");
+  const signupForm = document.getElementById("signupForm");
+  const formTitle = document.getElementById("formTitle");
+
+  document.getElementById("showSignup").addEventListener("click", () => {
+    loginForm.classList.add("hidden");
+    signupForm.classList.remove("hidden");
+    formTitle.textContent = "Sign Up";
+  });
+
+  document.getElementById("showLogin").addEventListener("click", () => {
+    signupForm.classList.add("hidden");
+    loginForm.classList.remove("hidden");
+    formTitle.textContent = "Login";
+  });
+
+  // 🔹 Password validation regex
+  function validatePassword(password) {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(password);
+  }
+
+  // 🔹 Handle Signup
+  signupForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = document.getElementById("signupName").value.trim();
+    const email = document.getElementById("signupEmail").value.trim();
+    const pass = document.getElementById("signupPassword").value;
+    const confirm = document.getElementById("signupConfirm").value;
+    const msg = document.getElementById("signupMsg");
+
+    if (!validatePassword(pass)) {
+      msg.textContent = "❌ Password must be 8+ chars, include uppercase, lowercase, number, and special character.";
+      msg.className = "error";
+      return;
+    }
+    if (pass !== confirm) {
+      msg.textContent = "❌ Passwords do not match.";
+      msg.className = "error";
+      return;
+    }
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, pass);
+      msg.textContent = "🎉 Account created successfully! Please login.";
+      msg.className = "success";
+      setTimeout(() => {
+        signupForm.classList.add("hidden");
+        loginForm.classList.remove("hidden");
+        formTitle.textContent = "Login";
+      }, 1500);
+    } catch (error) {
+      msg.textContent = "❌ " + error.message;
+      msg.className = "error";
+    }
+  });
+
+  // 🔹 Handle Login
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("loginEmail").value.trim();
+    const pass = document.getElementById("loginPassword").value;
+    const msg = document.getElementById("loginMsg");
+
+    try {
+      await signInWithEmailAndPassword(auth, email, pass);
+      msg.textContent = "✅ Login successful! Welcome back.";
+      msg.className = "success";
+      // Example redirect after login:
+      // window.location.href = "check-score.html";
+    } catch (error) {
+      msg.textContent = "❌ " + error.message;
+      msg.className = "error";
+    }
+  });
+</script>
+</body>
+</html>
