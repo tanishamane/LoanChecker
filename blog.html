@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -204,3 +205,211 @@
 <footer class="site-footer"></footer>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Blog — CrediGrant</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="assets/logo.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="script.js"></script>
+  <style>
+    :root {
+      --primary: #ffd600;       /* yellow accent */
+      --primary-600: #ffbb00;   /* deeper yellow for hover */
+      --muted: #6c6c6c;
+      --sidebar-bg: #fffde7;
+      --card-bg: #fff;
+      --border-color: #000000; /* black border */
+      --text-color: #222;
+    }
+    body { background: #fff; color: var(--text-color); }
+    .container { max-width:1100px; margin:0 auto; padding:0 20px; }
+    .blog-layout { display: grid; grid-template-columns: 2.5fr 1fr; gap: 32px; }
+    .cards-vertical { display: grid; gap: 18px; }
+    @media (max-width: 900px) { .blog-layout { grid-template-columns: 1fr; } }
+    .sidebar { 
+      background: var(--sidebar-bg);
+      border-radius: 16px;
+      padding: 24px;
+      border: 2px solid var(--border-color);
+      color: var(--text-color);
+    }
+    .sidebar .btn { display: block; margin: 18px 0; color: #000; }
+    .sidebar h4 { margin:0 0 10px; color: var(--primary);}
+    .sidebar ul { margin:0 0 0 1em; padding:0; color: var(--text-color);}
+    .sidebar li { margin-bottom: 7px;}
+    h1, h2, h3, h4 { color: var(--primary); }
+    .page-title { margin-top: 26px; margin-bottom: 20px; text-align: left; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 22px 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: box-shadow .3s;
+      color: var(--text-color);
+    }
+    .card h3 { color: var(--primary);}
+    .card.post .pill {
+      background: var(--primary);
+      color: #111;
+      padding: 7px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      margin-top: 14px;
+      display: inline-block;
+      font-weight: 600;
+      transition: background .24s;
+    }
+    .card.post .pill:hover { background: var(--primary-600);}
+    .muted { color: var(--muted); font-size: .98em;}
+    .btn {
+      background: var(--primary);
+      color: #111;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background .23s;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--primary-600);}
+    .btn-outline {
+      border: 2px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+    }
+    .btn-outline:hover { background: var(--primary); color:#fff;}
+    /* Navbar black background */
+    .site-header { background: #111; border-bottom: 4px solid var(--primary);}
+    .site-header .container {
+      display: flex; align-items: center; gap: 24px; padding: 14px 20px;
+    }
+    .site-header .brand {
+      display: flex; align-items: center; gap: 10px; font-weight: 800;
+      font-size: 1.1rem; color: var(--primary); text-decoration: none;
+    }
+    .site-header .brand .logo {
+      width: 36px; height: 36px; background: var(--primary);
+      color: #111; border-radius: 8px;
+      display: grid; place-items: center; font-weight: 900; font-size: 1.1rem;
+    }
+    .site-header .brand .title { color: var(--primary); font-weight: 700; }
+    .nav {
+      display: flex; gap: 20px; margin-left: auto; font-weight: 600;
+    }
+    .nav a {
+      padding: 8px 10px; border-radius: 8px; color: #eee;
+      text-decoration: none; transition: background .25s, color .25s;
+    }
+    .nav a.active,
+    .nav a:hover {
+      background: var(--primary);
+      color: #111;
+    }
+    .cta {
+      background: var(--primary); color: #111;
+      border-radius: 12px; padding: 10px 16px;
+      text-decoration: none; font-weight: 700; margin-left: 8px;
+    }
+    .cta:hover { background: var(--primary-600); }
+    @media (max-width:600px) {
+      .blog-layout { gap: 20px; }
+      .sidebar { padding: 14px; }
+      .card { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="brand">
+      <div class="logo">LC</div>
+      <div class="title">Loan Checker</div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="check-score.html">Check Score</a>
+      <a href="calculator.html">Calculators</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="faq.html">FAQs</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+    </nav>
+    <a class="cta" href="check-score.html">Check Now</a>
+  </div>
+</header>
+
+<main class="container">
+  <h1 class="page-title">Credit Education & Tips</h1>
+
+  <div class="blog-layout">
+    <!-- MAIN BLOG POSTS -->
+    <div>
+      <div class="cards-vertical">
+
+        <article class="card post">
+          <h3>5 Habits to Boost Your Credit Score</h3>
+          <p>Consistent on-time payments, low utilization and smart credit use.<br>
+            <span class="muted">Practical steps for credit health.</span></p>
+        </article>
+
+        <article class="card post">
+          <h3>Personal Loan vs. Credit Card EMI: What’s Best?</h3>
+          <p>Comparing costs, approval, and what affects your score most.<br>
+            <span class="muted">Explore the right option for your needs.</span></p>
+        </article>
+
+        <article class="card post">
+          <h3>What Do Lenders Look For?</h3>
+          <p>It’s more than just your credit score: income, FOIR, obligations and credit mix.<br>
+            <span class="muted">Understand approval criteria.</span></p>
+        </article>
+
+        <article class="card post">
+          <h3>Should I Check My Score Often?</h3>
+          <p>Learn why soft pulls don’t hurt your score and how to monitor your report risk-free.<br>
+            <span class="muted">Monitoring creates strong credit.</span></p>
+        </article>
+
+        <article class="card post">
+          <h3>EMI Calculator: How Much Loan Can You Afford?</h3>
+          <p>Using our free calculator to avoid over-borrowing.<br>
+            <span class="muted">Smart finance, stress-free.</span></p>
+          <a class="pill" href="calculator.html">Try EMI Calculator</a>
+        </article>
+
+        <article class="card post">
+          <h3>Common Mistakes That Hurt Credit</h3>
+          <p>Missed bills, maxed cards, too many new loans—avoid these pitfalls for a stronger financial future.</p>
+        </article>
+
+      </div>
+    </div>
+    <!-- SIDEBAR: Quick Tools & Tips -->
+    <aside class="sidebar">
+      <h4>Ready to Take Control?</h4>
+      <a class="btn btn-primary" href="check-score.html">Check Your Score Instantly</a>
+      <a class="btn btn-outline" href="calculator.html">Try Our Loan Calculators</a>
+      <h4>Quick Tips</h4>
+      <ul>
+        <li>Checking your score here doesn’t hurt your credit.</li>
+        <li>Keep your credit utilization below 30% for a better score.</li>
+        <li>Pay EMIs and bills on time—reminder tools can help!</li>
+        <li>Compare loan offers before applying for new credit.</li>
+      </ul>
+    </aside>
+  </div>
+</main>
+<footer class="site-footer"></footer>
+</body>
+</html>
+>>>>>>> 085537bd06f083e2d58f527b93cd476fb5dc02a7

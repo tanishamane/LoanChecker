@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,3 +78,84 @@
   </footer>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Your Results — CrediGrant</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="assets/logo.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html"><img src="Logo.svg" alt="logo"/><span>CrediGrant</span></a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="check-score.html">Check Score</a>
+    <a href="calculator.html">Calculators</a>
+    <a href="faq.html">FAQs</a>
+    <button id="themeToggle" class="btn-icon" aria-label="Toggle dark mode">🌓</button>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
+</header>
+
+<main class="container">
+  <h1 class="page-title">Your Credit Score & Loan Offers</h1>
+
+  <div class="grid two">
+    <div class="card">
+      <h3>Your Credit Score</h3>
+      <div class="score-wrap">
+        <canvas id="scoreChart" width="240" height="240" aria-label="Score gauge"></canvas>
+        <div class="score-text">
+          <div id="scoreValue" class="score-value">—</div>
+          <div id="scoreBand" class="score-band">—</div>
+        </div>
+      </div>
+      <p id="scoreExplain" class="muted">Loading your score insights…</p>
+    </div>
+
+    <div class="card">
+      <h3>Quick Profile</h3>
+      <div id="profileSummary" class="profile-summary"></div>
+      <div class="badges">
+        <span class="chip">🔒 Encrypted</span>
+        <span class="chip">🧪 Soft Pull</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2 class="section-title">Eligible Loan Offers</h2>
+    <div id="offers" class="grid cards-3"></div>
+    <div class="compare-bar">
+      <button id="compareBtn" class="btn btn-outline" disabled>Compare Selected</button>
+    </div>
+    <div id="compareTableWrap" class="card hidden">
+      <h3>Compare Offers</h3>
+      <div class="table-wrap">
+        <table id="compareTable">
+          <thead><tr><th>Bank</th><th>Rate (p.a.)</th><th>Max Amount</th><th>Tenure</th><th>EMI (₹)</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Improve Your Score</h2>
+    <ul id="tips" class="checklist"></ul>
+  </section>
+</main>
+
+<footer class="site-footer">
+  </footer>
+</body>
+</html>
+>>>>>>> 085537bd06f083e2d58f527b93cd476fb5dc02a7
